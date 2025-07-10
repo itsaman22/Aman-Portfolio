@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, Github, Linkedin, ArrowDown } from 'lucide-react';
-import MyPicprofileSquare from '../assets/MyPicprofileSquare.jpg';
+
 const Hero = () => (
   <section
     id="home"
@@ -15,12 +15,8 @@ const Hero = () => (
 
     <div className="relative max-w-6xl mx-auto text-center animate-fade-in">
       {/* Profile Image */}
-      <img
-        src={MyPicprofileSquare}
-        alt="Aman"
-        className="mx-auto mb-6 w-32 h-32 rounded-full shadow-lg border-4 border-white object-cover"
-      />
-      <h2 className="text-lg text-blue-500 font-semibold tracking-wide mb-2">
+    
+      <h2 className="text-lg text-blue-600 font-semibold tracking-wide mb-2">
         Welcome to my portfolio
       </h2>
       <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4">
