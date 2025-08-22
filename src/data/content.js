@@ -12,14 +12,16 @@ export const projects = [
     description: 'AI-driven mentorship platform with real-time video calling and scalable architecture',
     tech: ['React', 'PHP', 'Node.js', 'Firebase', 'WebRTC API'],
     features: ['85% accuracy AI matching', 'Real-time video calling', 'Cloud deployment'],
-    period: 'Sep 2024 - Nov 2024'
+    period: 'Sep 2024 - Nov 2024',
+    link : 'https://mentor-connect-mauve.vercel.app/'
   },
   {
     title: 'Max Disha',
     description: 'Comprehensive healthcare portal with responsive design and optimized performance',
     tech: ['HTML', 'Tailwind CSS', 'React.js'],
     features: ['95% cross-device compatibility', '25% faster load times', 'Responsive design'],
-    period: 'Jul 2024 - Aug 2024'
+    period: 'Jul 2024 - Aug 2024',
+    link: 'https://itsaman22.github.io/MaxDisha/'
   }
 ];
 

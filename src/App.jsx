@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [darkMode, setDarkMode] = useState(false);
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -20,15 +21,20 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar activeSection={activeSection} scrollToSection={scrollToSection} />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
+    <div className={`${darkMode ? 'dark' : ''} min-h-screen transition-colors duration-300`}>
+      <Navbar 
+        activeSection={activeSection} 
+        scrollToSection={scrollToSection}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
+      <Hero darkMode={darkMode} />
+      <About darkMode={darkMode} />
+      <Experience darkMode={darkMode} />
+      <Projects darkMode={darkMode} />
+      <Skills darkMode={darkMode} />
+      <Contact darkMode={darkMode} />
+      <Footer darkMode={darkMode} />
     </div>
   );
 };

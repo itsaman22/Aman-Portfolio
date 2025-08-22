@@ -1,27 +1,35 @@
 import React, { useState } from 'react';
+import { Sun, Moon } from 'lucide-react';
 
-const Navbar = ({ activeSection, scrollToSection }) => {
+const Navbar = ({ activeSection, scrollToSection, darkMode, setDarkMode }) => {
   const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-white/70 shadow-lg">
+    <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur shadow-lg transition-colors duration-300 ${
+      darkMode ? 'bg-gray-900/80' : 'bg-white/70'
+    }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="font-bold text-xl text-blue-700 tracking-tight drop-shadow-sm">
+          <div className={`font-bold text-xl tracking-tight drop-shadow-sm ${
+            darkMode ? 'text-blue-400' : 'text-blue-700'
+          }`}>
             Aman Singh Baghel
           </div>
+
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {sections.map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`relative text-sm font-medium capitalize transition-colors duration-200 px-1
-                  ${activeSection === section
+                className={`relative text-sm font-medium capitalize transition-colors duration-200 px-1 ${
+                  activeSection === section
                     ? 'text-blue-600'
-                    : 'text-gray-700 hover:text-blue-600'}
-                `}
+                    : darkMode 
+                      ? 'text-gray-300 hover:text-blue-400' 
+                      : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 {section}
                 {activeSection === section && (
@@ -29,15 +37,42 @@ const Navbar = ({ activeSection, scrollToSection }) => {
                 )}
               </button>
             ))}
+            
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`p-2 rounded-full transition-colors duration-200 ${
+                darkMode 
+                  ? 'hover:bg-gray-800 text-yellow-400' 
+                  : 'hover:bg-blue-100 text-blue-600'
+              }`}
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
           </div>
-          {/* Mobile Hamburger */}
-          <div className="md:hidden flex items-center">
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`p-2 rounded-full transition-colors duration-200 ${
+                darkMode 
+                  ? 'hover:bg-gray-800 text-yellow-400' 
+                  : 'hover:bg-blue-100 text-blue-600'
+              }`}
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none"
+              className={`focus:outline-none ${
+                darkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
+              }`}
               aria-label="Toggle menu"
             >
-              <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <rect y="5" width="24" height="2" rx="1" fill="currentColor" />
                 <rect y="11" width="24" height="2" rx="1" fill="currentColor" />
                 <rect y="17" width="24" height="2" rx="1" fill="currentColor" />
@@ -45,9 +80,12 @@ const Navbar = ({ activeSection, scrollToSection }) => {
             </button>
           </div>
         </div>
+
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="md:hidden flex flex-col space-y-2 mt-2 pb-4 bg-white/90 rounded-lg shadow animate-fade-in">
+          <div className={`md:hidden flex flex-col space-y-2 mt-2 pb-4 rounded-lg shadow animate-fade-in ${
+            darkMode ? 'bg-gray-800/90' : 'bg-white/90'
+          }`}>
             {sections.map((section) => (
               <button
                 key={section}
@@ -55,11 +93,13 @@ const Navbar = ({ activeSection, scrollToSection }) => {
                   scrollToSection(section);
                   setMenuOpen(false);
                 }}
-                className={`text-base font-medium capitalize px-3 py-2 rounded transition-colors duration-200
-                  ${activeSection === section
+                className={`text-base font-medium capitalize px-3 py-2 rounded transition-colors duration-200 ${
+                  activeSection === section
                     ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-700 hover:text-blue-600'}
-                `}
+                    : darkMode
+                      ? 'text-gray-300 hover:text-blue-400'
+                      : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 {section}
               </button>
@@ -67,7 +107,7 @@ const Navbar = ({ activeSection, scrollToSection }) => {
           </div>
         )}
       </div>
-      {/* Animations */}
+
       <style>
         {`
           .animate-slide-in {

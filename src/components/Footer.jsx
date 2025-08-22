@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Footer = () => (
-  <footer className="bg-gradient-to-r from-blue-900 via-blue-800 to-teal-800 text-white py-8 px-4 sm:px-6 lg:px-8 border-t border-blue-700 animate-fade-in">
+const Footer = ({ darkMode }) => (
+  <footer className={`py-8 px-4 sm:px-6 lg:px-8 border-t transition-all duration-300 ${
+    darkMode 
+      ? 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-gray-700' 
+      : 'bg-gradient-to-r from-blue-900 via-blue-800 to-teal-800 border-blue-700'
+  } text-white animate-fade-in`}>
     <div className="max-w-6xl mx-auto text-center">
       <p className="text-gray-300">
         © 2024 Aman Singh Baghel. Built with{' '}

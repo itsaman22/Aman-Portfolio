@@ -2,19 +2,31 @@ import React from 'react';
 import { Code, Award } from 'lucide-react';
 import { skills, certifications } from '../data/content';
 
-const Skills = () => (
-  <section id="skills" className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50 to-teal-50 animate-fade-in">
+const Skills = ({ darkMode }) => (
+  <section id="skills" className={`py-12 px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+    darkMode 
+      ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' 
+      : 'bg-gradient-to-br from-white via-blue-50 to-teal-50'
+  } animate-fade-in`}>
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Technical Skills</h2>
+      <h2 className={`text-3xl font-bold mb-8 text-center ${
+        darkMode ? 'text-white' : 'text-gray-900'
+      }`}>Technical Skills</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {Object.entries(skills).map(([category, items], idx) => (
           <div
             key={category}
-            className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-fade-in"
+            className={`p-6 rounded-lg border shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-fade-in ${
+              darkMode 
+                ? 'bg-gray-800/80 border-gray-700' 
+                : 'bg-white border-gray-200'
+            }`}
             style={{ animationDelay: `${idx * 0.1 + 0.1}s` }}
           >
-            <h3 className="font-semibold text-gray-900 mb-4 capitalize flex items-center gap-2">
-              <Code size={18} />
+            <h3 className={`font-semibold mb-4 capitalize flex items-center gap-2 ${
+              darkMode ? 'text-white' : 'text-gray-900'
+            }`}>
+              <Code size={18} className="text-blue-400" />
               {category}
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -31,15 +43,23 @@ const Skills = () => (
         ))}
       </div>
 
-      <div className="mt-8 bg-white/90 p-6 rounded-lg shadow-sm border border-blue-100 transition-shadow duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.5s' }}>
-        <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-          <Award size={20} />
+      <div className={`mt-8 p-6 rounded-lg border shadow-sm transition-shadow duration-300 hover:shadow-lg animate-fade-in ${
+        darkMode 
+          ? 'bg-gray-800/80 border-gray-700' 
+          : 'bg-white/90 border-blue-100'
+      }`} style={{ animationDelay: '0.5s' }}>
+        <h3 className={`font-semibold mb-4 flex items-center gap-2 ${
+          darkMode ? 'text-white' : 'text-gray-900'
+        }`}>
+          <Award size={20} className="text-blue-400" />
           Certifications
         </h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {certifications.map((cert, i) => (
-            <div key={i} className="flex items-start gap-2 text-gray-600">
-              <span className="text-blue-600 mt-1">•</span>
+            <div key={i} className={`flex items-start gap-2 ${
+              darkMode ? 'text-gray-300' : 'text-gray-600'
+            }`}>
+              <span className="text-blue-400 mt-1">•</span>
               <span className="text-sm">{cert}</span>
             </div>
           ))}
