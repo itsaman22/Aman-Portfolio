@@ -8,12 +8,22 @@ export const skills = {
 
 export const projects = [
   {
+    title: 'CivicSense',
+    description: 'A platform for citizens to report and resolve local civic issues efficiently.',
+    tech: ['HTML', 'Tailwind CSS', 'React.js','MongoDB Atlas', 'Node.js',"OpenStreetMap API"],
+    features: ['95% cross-device compatibility', '25% faster load times', 'Responsive design'],
+    period: 'Sept 2025',
+    link: 'https://civicsense-frontend.onrender.com/',
+    image: "/Project3.png"
+  },
+  {
     title: 'Mentors Connect',
-    description: 'AI-driven mentorship platform with real-time video calling and scalable architecture',
+    description: 'Mentorship platform with real-time video calling and scalable architecture',
     tech: ['React', 'PHP', 'Node.js', 'Firebase', 'WebRTC API'],
     features: ['85% accuracy AI matching', 'Real-time video calling', 'Cloud deployment'],
     period: 'Sep 2024 - Nov 2024',
-    link : 'https://mentor-connect-mauve.vercel.app/'
+    link : 'https://mentorconnect-frontend-nref.onrender.com/',
+    image: "/Project1.png"
   },
   {
     title: 'Max Disha',
@@ -21,7 +31,8 @@ export const projects = [
     tech: ['HTML', 'Tailwind CSS', 'React.js'],
     features: ['95% cross-device compatibility', '25% faster load times', 'Responsive design'],
     period: 'Jul 2024 - Aug 2024',
-    link: 'https://itsaman22.github.io/MaxDisha/'
+    link: 'https://itsaman22.github.io/MaxDisha/',
+    image: "/Project2.png"
   }
 ];
 
